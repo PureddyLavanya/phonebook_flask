@@ -1,0 +1,36 @@
+#bn {
+    margin: 20px 30px;
+
+}
+body{
+    text-align: center;
+    background-image: linear-gradient(30deg, #22ec40bb, rgba(20, 241, 230, 0.96));
+}
+.c{
+    padding:10px;
+}
+p{
+    font-size:20px;
+}
+input{
+    
+    margin-left:10px;
+}
+form{
+    border:2px solid blueviolet;
+    border-radius: 10px;
+    height:50%;
+    width:50%;
+    padding: 10px;
+    margin-left:25%;
+    margin-top:7%;
+}
+
+@media (max-width:740px){
+    form{
+    border:2px solid blueviolet;
+    border-radius: 10px;
+    height:45%;
+    width:40%;
+    }
+}

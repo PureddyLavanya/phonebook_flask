@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        table{
+            border-spacing:1px;
+        }
+    </style>
+</head>
+<body>
+    <h2 align="center">Your Contacts Are:</h2>
+    <table class="table table-striped text-wrap table-fixed">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th scope="col" class="lg-1">Name</th>
+                <th scope="col" class="lg-1">Phone1</th>
+                <th scope="col" class="lg-1">Phone2</th>
+                <th scope="col" class="lg-1">Email</th>
+                <th scope="col" class="lg-1">Address</th>
+                <th scope="col" class="lg-1">Relationship</th>
+                <th scope="col" class="lg-1">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="table">
+        {% for row in my_cnt %}
+                <tr>
+                <td class="lg-1">{{ row[0] }}</td>
+                <td class="lg-1">{{ row[1] }}</td>
+                <td class="lg-1">{{ row[2] }}</td>
+                <td class="lg-1">{{ row[3] }}</td>
+                <td class="lg-1">{{ row[4] }}</td>
+                <td class="lg-1">{{ row[5] }}</td>
+                <td class="lg-1">{{ row[6] }}</td>
+                <td class="lg-1">
+                <a href="/update/{{ row[0] }}" onclick="return confirm('Are Sure Want To Updated ?')"class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil">Edit</span></a>
+                <a href="/delete/{{ row[0] }}" onclick="return confirm('Are Sure Want To Deleted ?')" class="btn btn-danger btn-sm">Delete<span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+            </tr>
+        {% endfor %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+  }
+  
+  li {
+    float:right;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+  }
+  body{
+    text-align: center;
+    color: aliceblue;
+    background-image: url('/static/images/bg.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+  li a:hover {
+    background-color: #111111;
+    text-decoration: none;
+    color:crimson;
+  }
+  
+  @media only screen and (max-width: 300px) {
+    .prev,.next,.text {font-size: 11px}
+  }

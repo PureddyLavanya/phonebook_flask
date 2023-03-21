@@ -1,0 +1,30 @@
+body{
+    background-image: url('/static/images/img4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+button{
+    height:80px;
+    width:170px;
+    background-color: rgba(220, 230, 110, 0.971);
+    color:rgb(163, 11, 205);
+    font-weight:bold;
+    margin-left:50%;
+    margin-top:400px;
+    margin-bottom:10px;
+    font-size:25px;
+    border:5px solid purple;
+    border-radius:5px;
+}
+div{
+    color:rgb(206, 170, 29);
+    font-size:35px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    font-weight: bolder;
+    background-color: beige;
+    width:400px;
+    height:150px;
+    margin-left:40%;
+    margin-top:5%;
+}

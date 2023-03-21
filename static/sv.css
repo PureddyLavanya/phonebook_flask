@@ -1,0 +1,25 @@
+body{
+    background-color: ivory;
+    text-align: center;
+}
+form {
+    height: 650px;
+    width:560px;
+    border:4px solid black;
+    border-radius:6px;
+    padding:10px;
+    margin: 0 auto;
+}
+input{
+    margin:16px 50px 16px 50px;
+
+}
+#btn{
+    background-color: aqua;
+    width:70px;
+    color: green;
+    height:45px;
+}
+#btn:hover{
+    background-color: brown;
+}

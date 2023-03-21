@@ -1,0 +1,26 @@
+form{
+    width:50%;
+    height:40%;
+}
+body{
+    text-align: center;
+    background-image: url('/static/images/im1.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+input{
+    background-color: azure;
+    margin:2px 2px 3px 2px;
+}
+textarea{
+    background-color: azure;
+}
+form{
+    width:47%;
+    height:70%;
+    border:5px solid gray;
+    border-radius:12px;
+    margin-left:27%;
+    margin-top:5%;
+    padding:5px;
+}

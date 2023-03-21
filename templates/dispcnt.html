@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Displaying Contact Details</title>
+    <link rel="stylesheet" href="../static/sv.css">
+</head>
+<body>
+    <form action="/edit_list" method="post">
+        Id:<input type="text" name="uid" maxlength="100" size="50" value="{{ req_cnt[0] }}" readonly>
+        Name:<input type="text" name="uname" maxlength="30" size="50" value="{{ req_cnt[1] }}"><br>
+        Phone Number1:<input type="tel" name="phn1" maxlength="13" size="47" value="{{ req_cnt[2] }}"><br>
+        Phone Number2:<input type="tel" name="phn2" maxlength="13" size="47" value="{{ req_cnt[3] }}" ><br>
+        Email:<input type="email" name="eml" placeholder="Enter email here" size="50" value="{{ req_cnt[4]}}"><br>
+        Address:<input type="text" name="addr" maxlength="120" size="50" value="{{ req_cnt[5] }}"><br>
+        Relationship:<input type="text" name="rel" maxlength="15" size="50" value="{{ req_cnt[6] }}"><br>
+        <input type="submit" value="Save" id="btn">
+    </form>
+</body>
+</html>
