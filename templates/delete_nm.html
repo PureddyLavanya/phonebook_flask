@@ -13,7 +13,7 @@
 </head>
 <body>
     {% for message in get_flashed_messages() %}
-    <h2 align="center" style="color:crimson">{{message}}</h2>
+    <h2 align="center" class="text-danger text-center">{{message}}</h2>
     {% endfor %}
     <form action="/del_sub" method="post">
         Name:<input type="text" name="del_name" placeholder="Enter name here.." maxlength="60" size="70" required><br>

@@ -13,7 +13,7 @@
 </head>
 <body>
     {% for message in get_flashed_messages() %}
-    <h2 align="center"> {{message}} </h2>
+    <h2 align="center" class="text-danger"> {{message}} </h2>
     {% endfor %}
     <form action="/view_cnt" method="post">
         <p>Name:</p><input type="text" name="cname" placeholder="Enter name here.." maxlength="60" size="70" required>

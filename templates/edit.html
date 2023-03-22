@@ -16,14 +16,14 @@
      <h2 align="center" style="color:crimson">{{message}}</h2>
     {% endfor %}
     <form action="/edit_list" method="post">
-        Id:<input type="text" name="uid" maxlength="100" size="35" value="{{ rec[0] }}" readonly><br>
-        Name:<input type="text" name="uname" maxlength="30" size="35" value="{{ rec[1] }}"><br>
-        Phone Number1:<input type="tel" name="phn1" maxlength="10" size="35" value="{{ rec[2] }}"><br>
-        Phone Number2:<input type="tel" name="phn2" maxlength="10" size="35" value="{{ rec[3] }}" ><br>
-        Email:<input type="email" name="eml" placeholder="Enter email here" size="35" value="{{ rec[4]}}"><br>
-        Address:<input type="text" name="addr" maxlength="120" size="35" value="{{ rec[5] }}"><br>
-        Relationship:<input type="text" name="rel" maxlength="15" size="35" value="{{ rec[6] }}"><br>
-        <input type="submit" value="Save" id="btn">
+        Id:<input  class="text-center" type="text" name="uid" maxlength="100" size="35" value="{{ rec[0] }}" readonly><br>
+        Name:<input  class="text-center" type="text" name="uname" maxlength="30" size="35" value="{{ rec[1] }}"><br>
+        Phone Number1:<input class="text-center" type="tel" name="phn1" maxlength="10" size="35" value="{{ rec[2] }}"><br>
+        Phone Number2:<input class="text-center" type="tel" name="phn2" maxlength="10" size="35" value="{{ rec[3] }}" ><br>
+        Email:<input class="text-center" type="email" name="eml" placeholder="Enter email here" size="35" value="{{ rec[4]}}"><br>
+        Address:<input class="text-center" type="text" name="addr" maxlength="120" size="35" value="{{ rec[5] }}"><br>
+        Relationship:<input class="text-center" type="text" name="rel" maxlength="15" size="35" value="{{ rec[6] }}"><br>
+        <input type="submit" value="Save" id="btn" class=" btn-primary btn-lg text-center">
     </form>
 </body>
 </html>
