@@ -12,30 +12,30 @@
 </head>
 <body>
     <h2 align="center">Your Contacts Are:</h2>
-    <table class="table table-striped text-wrap  table-bordered">
+    <table class="table table-striped text-wrap  table-bordered ">
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>
-                <th scope="col" class="lg-1">Name</th>
-                <th scope="col" class="lg-1">Phone1</th>
-                <th scope="col" class="lg-1">Phone2</th>
-                <th scope="col" class="lg-1">Email</th>
-                <th scope="col" class="lg-1">Address</th>
-                <th scope="col" class="lg-1">Relationship</th>
-                <th scope="col" class="lg-1">Actions</th>
+                <th scope="col" class="lg-1 text-center">Name</th>
+                <th scope="col" class="lg-1 text-center">Phone1</th>
+                <th scope="col" class="lg-1 text-center">Phone2</th>
+                <th scope="col" class="lg-1 text-center">Email</th>
+                <th scope="col" class="lg-1 text-center">Address</th>
+                <th scope="col" class="lg-1 text-center">Relationship</th>
+                <th scope="col" class="lg-1 text-center">Actions</th>
             </tr>
         </thead>
         <tbody class="table">
         {% for row in my_cnt %}
                 <tr>
-                <td class="lg-1">{{ row[0] }}</td>
-                <td class="lg-1">{{ row[1] }}</td>
-                <td class="lg-1">{{ row[2] }}</td>
-                <td class="lg-1">{{ row[3] }}</td>
-                <td class="lg-1">{{ row[4] }}</td>
-                <td class="lg-1">{{ row[5] }}</td>
-                <td class="lg-1">{{ row[6] }}</td>
-                <td class="lg-1">
+                <td class="lg-1 text-center">{{ row[0] }}</td>
+                <td class="lg-1 text-center">{{ row[1] }}</td>
+                <td class="lg-1 text-center">{{ row[2] }}</td>
+                <td class="lg-1 text-center">{{ row[3] }}</td>
+                <td class="lg-1 text-center">{{ row[4] }}</td>
+                <td class="lg-1 text-center">{{ row[5] }}</td>
+                <td class="lg-1 text-center">{{ row[6] }}</td>
+                <td class="lg-1 text-center">
                 <a href="/update/{{ row[0] }}" onclick="return confirm('Are Sure Want To Updated ?')"class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil">Edit</span></a>
                 <a href="/delete/{{ row[0] }}" onclick="return confirm('Are Sure Want To Deleted ?')" class="btn btn-danger btn-sm">Delete<span class="glyphicon glyphicon-trash"></span></a>
                 </td>
