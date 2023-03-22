@@ -9,7 +9,7 @@ con=mysql.connector.connect(host='localhost',
 
 
 app=Flask(__name__)
-app.secret_key = "secret key"
+app.secret_key = "my_secret_key"
 
 @app.route('/',methods=["GET","POST"])
 def home():
