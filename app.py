@@ -20,7 +20,7 @@ def my_admin():
     if request.method=="POST":
         a_name=request.form["ad_name"]
         a_psw=request.form["ad_psw"]
-        if a_name=="P" and a_psw=="123":
+        if a_name=="Admin" and a_psw=="123":
             return render_template("index.html")
         else:
             return "Enter valid details"
