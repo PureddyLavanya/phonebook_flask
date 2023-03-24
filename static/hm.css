@@ -1,7 +1,7 @@
 body{
     background-image: url('/static/images/img4.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:100% 100%;
 }
 button{
     height:80px;
@@ -9,7 +9,7 @@ button{
     background-color: rgba(220, 230, 110, 0.971);
     color:rgb(163, 11, 205);
     font-weight:bold;
-    margin-left:50%;
+    margin-left:47%;
     margin-top:400px;
     margin-bottom:10px;
     font-size:25px;
@@ -17,13 +17,13 @@ button{
     border-radius:5px;
 }
 div{
-    color:rgb(206, 170, 29);
+    color:rgb(128, 16, 198);
     font-size:35px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     font-weight: bolder;
     background-color: beige;
-    width:400px;
+    width:360px;
     height:150px;
     margin-left:40%;
     margin-top:5%;

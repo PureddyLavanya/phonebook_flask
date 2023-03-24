@@ -13,7 +13,7 @@
 </head>
 <body>
     {% for message in get_flashed_messages() %}
-     <h2 align="center" style="color:crimson">{{message}}</h2>
+     <h2 align="center"class="text-center text-danger">{{message}}</h2>
     {% endfor %}
     <form action="/edit_list" method="post">
         Id:<input  class="text-center" type="text" name="uid" maxlength="100" size="35" value="{{ rec[0] }}" readonly><br>

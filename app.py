@@ -13,6 +13,10 @@ app.secret_key = "my_secret_key"
 
 @app.route('/',methods=["GET","POST"])
 def home():
+    return render_template('home.html')
+
+@app.route('/admin')
+def admin():
     return render_template('login.html')
 
 @app.route('/suc',methods=["POST","GET"])
