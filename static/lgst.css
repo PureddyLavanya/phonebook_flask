@@ -4,7 +4,8 @@
 }
 body{
     text-align: center;
-    background-image: linear-gradient(30deg, #22ec40bb, rgba(20, 241, 230, 0.96));
+    background-size: 100% 100%;
+    background-image: linear-gradient(35deg, #22ec40bb, rgba(20, 241, 230, 0.96));
 }
 .c{
     padding:10px;
