@@ -31,7 +31,7 @@ def my_admin():
     else:
         return render_template("login.html")
 
-@app.route('/index')
+@app.route('/index',methods=["GET","POST"])
 def index():
     return render_template('index.html')
 
