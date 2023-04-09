@@ -9,20 +9,21 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Add Contact Page</title>
+    <link rel="icon" href="/static/images/ic2.png">
     <link rel="stylesheet" href="../static/sv.css">
 </head>
 <body>
     {% for message in get_flashed_messages() %}
-     <h2 align="center" style="color:crimson">{{message}}</h2>
+     <h2 class="text-center text-danger">{{message}}</h2>
     {% endfor %}
-    <form action="/cnt_list" method="post">
-        Name:<input type="text" name="uname" maxlength="30" size="50" placeholder="Enter name here" required><br>
-        Phone Number1:<input type="tel" name="phn1" maxlength="10" size="47" placeholder="Enter phone number1" required><br>
-        Phone Number2:<input type="tel" name="phn2" maxlength="10" size="47" placeholder="Enter phone number2" ><br>
-        Email:<input type="email" name="eml" maxlength="50" placeholder="Enter email here" size="50" required><br>
-        Address:<input type="text" name="addr" maxlength="120" size="50" placeholder="Enter address here" required><br>
-        Relationship:<input type="text" name="rel" maxlength="15" size="50" placeholder="Enter relationship here" required><br>
-            <input type="submit" value="Save" id="btn">
+    <form action="/cnt_list" class="col-lg-5 col-md-4 col-sm-10 mx-auto" method="post">
+        Name:<input  class="text-center" type="text" name="uname" maxlength="30"  placeholder="Enter name here" required><br>
+        Phone Number1:<input class="text-center"  type="tel" name="phn1" maxlength="13"placeholder="Enter phone number1" required><br>
+        Phone Number2:<input class="text-center"  type="tel" name="phn2" maxlength="13"  placeholder="Enter phone number2" ><br>
+        Email:<input class="text-center col-lg-7 col-md-8 col-sm-2"  type="email" name="eml" maxlength="50" placeholder="Enter email here"  required><br>
+        Address:<input class="text-center"  type="text" name="addr" maxlength="120"  placeholder="Enter address here" required><br>
+        Relationship:<input class="text-center "  type="text" name="rel" maxlength="15" placeholder="Enter relationship here" required><br>
+            <button type="submit" value="Save" class="btn-outline-primary btn-lg">Save</button>
     </form>
 </body>
 </html>

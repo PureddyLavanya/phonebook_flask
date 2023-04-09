@@ -4,16 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" href="/static/images/ic2.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Contacts Page</title>
+    <style>
+      body{
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        background-image:url("../static/images/bg2.jpg");
+        background-size:cover;
+        background-repeat: no-repeat;
+      }
+        h4{
+          font-weight:800;
+        }
+        #myInput{
+          border:2px solid blue;
+        }
+        th{
+          font-weight:850;
+          font-size:20px;
+        }
+    </style>
 </head>
 <body>
-    <h2 align="center">Your Contacts Are:</h2>
-    <table class="table table-hover text-wrap  table-bordered ">
-        <thead class="thead-dark">
+    <h4 class="text-center text-primary">Your Contacts Are:</h4>
+    <input class="form-control col-lg-6 col-md-7 col-sm-3 mx-auto mt-3 mb-4 text-center text-secondary" id="myInput" type="text" placeholder="Search Here For Contact..">
+    <table class="table table-hover table-bordered text-wrap table-responsive-sm text-black" style="border-color:black;">
+        <thead class="bg-warning">
             <tr>
                 <th>ID</th>
                 <th scope="col" class="lg-1 text-center">Name</th>
@@ -25,7 +45,7 @@
                 <th scope="col" class="lg-1 text-center">Actions</th>
             </tr>
         </thead>
-        <tbody class="table">
+        <tbody class="table" id="myTable">
         {% for row in my_cnt %}
                 <tr>
                 <td class="lg-1 text-center">{{ row[0] }}</td>
@@ -41,5 +61,15 @@
                 </td>
             </tr>
         {% endfor %}
+        <script>
+            $(document).ready(function(){
+              $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+              });
+            });
+        </script>
 </body>
 </html>

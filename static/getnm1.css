@@ -1,23 +1,18 @@
 body{
-    background-image:url("../static/images/img2.jpg");
-    text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size:20px;
+    background-image: url('/static/images/img2.jpg');
     background-repeat: no-repeat;
     background-size:100% 100%;
     background-attachment: fixed;
+    height:100%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
 }
-.c{
-    padding:10px;
-}
-p{
-    font-size:20px;
-}
+
 form{
     border:2px solid black;
     max-height:400px;
-    font-size:23px;
-    padding:8px;
+    background-color:ghostwhite;
+    padding:12px;
     margin-left:450px;
     margin-top:170px;
     z-index:1;
@@ -26,16 +21,17 @@ form{
     height:1000px;
 }
 input[type=text],input[type=password]{
-    width:55%;
+    width:80%;
     padding: 12px 20px;
-    margin:2% 0% 2% 5%;
+    margin: 10px 0 10px 6px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-span{
-    margin:4px 6px;
-}
+
 #bt{
-    margin-left:45%;
+    margin-left:40%;
+}
+h2{
+    margin-top:15px;
 }

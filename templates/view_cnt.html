@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/images/ic2.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -12,7 +13,7 @@
     <link rel="stylesheet" href="../static/sv.css">
 </head>
 <body>
-    <form action="/index" method="post">
+    <form action="/index" method="post" class="col-lg-5 col-md-4 col-sm-12 mx-auto" >
         Id:<input  class="text-center " type="text" name="uid" maxlength="100" size="50" value="{{ req_cnt[0] }}" readonly><br>
         Name:<input class="text-center" type="text" name="uname" maxlength="30" size="50" value="{{ req_cnt[1] }}" readonly><br>
         Phone Number1:<input class="text-center" type="tel" name="phn1" maxlength="10" size="47" value="{{ req_cnt[2] }}" readonly><br>
@@ -20,7 +21,7 @@
         Email:<input class="text-center" type="email" name="eml" placeholder="Enter email here" size="50" value="{{ req_cnt[4]}}" readonly><br>
         Address:<input class="text-center" type="text" name="addr" maxlength="120" size="50" value="{{ req_cnt[5] }}" readonly><br>
         Relationship:<input class="text-center" type="text" name="rel" maxlength="15" size="50" value="{{ req_cnt[6] }}" readonly><br>
-        <input class="text-center btn-info" type="submit" value="OK" id="btn">
+        <button type="submit" value="Save" class="btn-outline-primary btn-lg">OK</button>
     </form>
 </body>
 </html>

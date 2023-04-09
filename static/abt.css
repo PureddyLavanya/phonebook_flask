@@ -1,5 +1,5 @@
 body{
-    background-image: url('/static/images/bg3.jpg');
+    background-image:url("../static/images/bg3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -8,4 +8,23 @@ img{
     height:450px;
     width:450px;
     margin:10% 2% 10% 2%;
+}
+.cl{
+    margin-top:20%;
+    float:left;
+    width:50%;
+    height:100%;
+    margin:0;
+}
+.cr{
+    float:right;
+    width:50%;
+    height:100%;
+    margin:0;
+}
+h2{
+    font-size: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(33, 61, 185);
+    margin: 0% 0% 0% 2%;
 }

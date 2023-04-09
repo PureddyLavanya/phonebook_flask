@@ -3,10 +3,9 @@ import mysql.connector
 from flask import *
 
 con=mysql.connector.connect(host='localhost',
-            username='root',
-            password='',
-            database='phonebook')
-
+                            user='root',
+                            password='',
+                            database='phonebook')
 
 app=Flask(__name__)
 app.secret_key = "my_secret_key"
@@ -27,7 +26,8 @@ def my_admin():
         if a_name=="Admin" and a_psw=="123":
             return render_template("index.html")
         else:
-            return "Enter valid details"
+            flash("Enter valid details")
+            return render_template("login.html")
     else:
         return render_template("login.html")
 
@@ -176,9 +176,9 @@ def result():
         f_queries=request.form["u_queries"]
         cur=con.cursor()
         if f_queries:
-            cur.execute("insert into feedback (u_name,u_email,u_feedback,u_queries) values(%s,%s,%s,%s,%s)",(f_name,f_email,f_feedback,f_queries))
+            cur.execute("insert into feedback (u_name,u_email,u_feedback,u_queries) values(%s,%s,%s,%s)",(f_name,f_email,f_feedback,f_queries))
             con.commit()
-            flash("We will reach you soon..")
+            flash("Thank You for your feedback"+"We will reach you soon..")
             return render_template("res.html")
         else:
             cur.execute("insert into feedback (u_name,u_email,u_feedback,u_queries) values(%s,%s,%s,%s)",(f_name,f_email,f_feedback,f_queries))

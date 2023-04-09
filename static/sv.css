@@ -1,25 +1,23 @@
 body{
-    background-color: ivory;
+    background-color: rgb(139, 226, 214);
     text-align: center;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: small;
 }
 form {
-    height: 650px;
-    width:560px;
+    background-color: rgb(255, 255, 255);
     border:4px solid black;
-    border-radius:6px;
-    padding:10px;
-    margin: 0 auto;
+    border-radius:3px;
+    padding:13px;
+   margin-left:30%;
+    margin-top:5%;
+    margin-right:25%;
+    font-size:20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    z-index:3;
 }
 input{
-    margin:16px 50px 16px 50px;
-
-}
-#btn{
-    background-color: aqua;
-    width:70px;
-    color: green;
-    height:45px;
-}
-#btn:hover{
-    background-color: brown;
+    margin:12px;
+    width:60%;
 }
