@@ -20,4 +20,18 @@ form {
 input{
     margin:12px;
     width:60%;
+    text-align: center;
+    margin-right:2px;
+}
+input[type="submit"]{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    border:2px solid black;
+    border-radius:3px;
+    padding:10px;
+    font-size:24px;
+    font-weight: 600;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-left:20%;
+    margin-right:20%;
 }

@@ -1,5 +1,9 @@
 body{
-   background-color: blueviolet;
+   background-image:url("../static/images/bg3.jpg");
+   background-attachment: fixed;
+   background-repeat: no-repeat;
+   background-size:100% 100%;
+
 }
 h1{
    color: white;
@@ -12,4 +16,40 @@ p{
     font-size: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0% 0% 0% 2%;
+}
+.card{
+      background-color: white;
+      border-radius: 10px;
+      border:8px solid #990dc0;
+      margin:10% 10% 2% 2%;
+      padding: 2% 2% 2% 2%;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.sob{
+   background-color: thistle;
+}
+.card-title{
+   color: rgb(180, 14, 202);
+   font-size: 30px;
+   font-weight:400;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   margin: 0% 0% 0% 2%;
+}
+.card-text{
+   color: black;
+   font-size: 20px;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   margin: 0% 0% 0% 2%;
+}
+@media (max-width: 600px){
+   .card-title{
+      color: rgb(180, 14, 202);
+      font-size:27px;
+      font-weight:300;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      margin: 0% 0% 0% 2%;
+   }
+   .card{
+      margin:20px;
+   }
 }

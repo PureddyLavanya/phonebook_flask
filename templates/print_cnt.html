@@ -16,6 +16,8 @@
         background-image:url("../static/images/bg2.jpg");
         background-size:cover;
         background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size:100% 100%;
       }
         h4{
           font-weight:800;
@@ -48,16 +50,16 @@
         <tbody class="table" id="myTable">
         {% for row in my_cnt %}
                 <tr>
-                <td class="lg-1 text-center">{{ row[0] }}</td>
-                <td class="lg-1 text-center">{{ row[1] }}</td>
+                <th class="lg-1 text-center my-auto">{{ row[0] }}</th>
+                <td class="lg-1 text-center my-auto">{{ row[1] }}</td>
                 <td class="lg-1 text-center">{{ row[2] }}</td>
                 <td class="lg-1 text-center">{{ row[3] }}</td>
                 <td class="lg-1 text-center">{{ row[4] }}</td>
                 <td class="lg-1 text-center">{{ row[5] }}</td>
                 <td class="lg-1 text-center">{{ row[6] }}</td>
                 <td class="lg-1 text-center">
-                <a href="/update/{{ row[0] }}" onclick="return confirm('Are Sure Want To Updated ?')"class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil">Edit</span></a>
-                <a href="/delete/{{ row[0] }}" onclick="return confirm('Are Sure Want To Deleted ?')" class="btn btn-danger btn-sm">Delete<span class="glyphicon glyphicon-trash"></span></a>
+                <a href="/update/{{ row[0] }}" onclick="return confirm('Are Sure Want To Updated ?')"class="btn btn-warning btn-md m-1"><span class="glyphicon glyphicon-pencil">Edit</span></a>
+                <a href="/delete/{{ row[0] }}" onclick="return confirm('Are Sure Want To Deleted ?')" class="btn btn-danger btn-md m-1">Delete<span class="glyphicon glyphicon-trash"></span></a>
                 </td>
             </tr>
         {% endfor %}

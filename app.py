@@ -89,7 +89,7 @@ def re_update(r_id):
     cur=con.cursor()
     cur.execute("select * from my_contacts where id=%s",(r_id,))
     data=cur.fetchone()
-    return render_template("update_form.html",ref=data)
+    return render_template("edit_cnt.html",ref=data)
 
 @app.route('/delete/<string:r_id>',methods=["GET","POST"])
 def re_delete(r_id):
@@ -110,7 +110,7 @@ def edit_sub():
         cur.execute("select * from my_contacts where uname=%s",(e_name,))
         req_rec=cur.fetchone()
         if req_rec:
-            return render_template("edit.html",rec=req_rec)
+            return render_template("edit_cnt.html",ref=req_rec)
         else:
             flash("Contact doesn't existed")
             return render_template("edit_nm.html")
@@ -132,7 +132,7 @@ def edit_list():
         con.commit()
         return redirect('/get')
     else:
-        return render_template("edit.html")
+        return render_template("edit_cnt.html")
         
 @app.route('/delete')
 def delete():
