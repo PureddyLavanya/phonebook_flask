@@ -4,7 +4,7 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #e7f683;
-    width: 100%;
+    width:100%;
     height:10%;
     margin-bottom:5px;
   }
@@ -23,7 +23,6 @@ ul {
   img{
     width:400px;
     height:550px;
-    transform: rotate(16deg);
     animation: mymove 5s infinite;
   }
   .cr{
@@ -49,10 +48,10 @@ ul {
     display: block;
     color: rgb(34, 122, 203);
     text-align: center;
-    padding:12px;
+    padding:9px;
     font-weight:300;
-    text-decoration: none;
-    font-size:20px;
+    text-decoration:none;
+    font-size:21px;
     font-family: Arial, Helvetica, sans-serif;
   }
   body{
@@ -66,11 +65,11 @@ ul {
   li a:hover {
     background-color: #94e3e1;
     text-decoration: none;
-    font-weight:1000;
+    font-weight:500;
     display: block;
-    font-size:17px;
+    font-size:19px;
     font-family: 'Courier New', Courier, monospace;
-    color:rgb(162, 6, 115);
+    color:rgb(194, 18, 141);
   }
   
   @media only screen and (max-width: 300px) {

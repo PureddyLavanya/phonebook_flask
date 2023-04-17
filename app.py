@@ -43,6 +43,7 @@ def create():
 def cnt_list():
     if request.method=="POST":
       name=request.form["uname"]
+      n_name=request.form["nickname"]
       ph1=request.form["phn1"]
       ph2=request.form["phn2"]
       el=request.form["eml"]
@@ -55,7 +56,7 @@ def cnt_list():
           flash("Contact details entered are already existed")
           return render_template("save.html")
       else:
-          cur.execute("insert into my_contacts (uname,phn1,phn2,eml,addr,rel) values(%s,%s,%s,%s,%s,%s)",(name,ph1,ph2,el,ad,r))
+          cur.execute("insert into my_contacts (uname,nick_name,phn1,phn2,eml,addr,rel) values(%s,%s,%s,%s,%s,%s,%s)",(name,n_name,ph1,ph2,el,ad,r))
           con.commit()
           return redirect('/get')
     else:
@@ -122,13 +123,14 @@ def edit_list():
     if request.method=="POST":
         n_id=request.form["uid"]
         n_uname=request.form["uname"]
+        n_nkname=request.form["nickname"]
         n_phn1=request.form["phn1"]
         n_phn2=request.form["phn2"]
         n_eml=request.form["eml"]
         n_addr=request.form["addr"]
         n_rel=request.form["rel"]
         cur=con.cursor()
-        cur.execute("update my_contacts set uname=%s, phn1=%s, phn2=%s, eml=%s, addr=%s, rel=%s where id=%s",(n_uname,n_phn1,n_phn2,n_eml,n_addr,n_rel,n_id))
+        cur.execute("update my_contacts set uname=%s,nick_name=%s,phn1=%s, phn2=%s, eml=%s, addr=%s, rel=%s where id=%s",(n_uname,n_nkname,n_phn1,n_phn2,n_eml,n_addr,n_rel,n_id))
         con.commit()
         return redirect('/get')
     else:
