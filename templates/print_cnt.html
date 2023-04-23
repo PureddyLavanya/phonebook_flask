@@ -26,6 +26,7 @@
         }
         #myInput{
           border:2px solid blue;
+          border-radius:40px;
         }
         th{
           font-weight:850;
@@ -36,7 +37,7 @@
 <body>
     <h4 class="text-center text-primary">Your Contacts Are:</h4>
     <input class="form-control col-lg-6 col-md-7 col-sm-3 mx-auto mt-3 mb-4 text-center text-secondary" id="myInput" type="text" placeholder="Search Here For Contact..">
-    <table class="table table-hover table-bordered text-wrap table-responsive-sm text-black">
+    <table class="table table-hover table-bordered text-wrap table-responsive-sm text-black" id="myTable">
         <thead class="bg-warning">
             <tr>
                 <th scope="col" class="lg-1 text-center">ID</th>
@@ -68,14 +69,14 @@
             </tr>
         {% endfor %}
         <script>
-            $(document).ready(function(){
-              $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
+          $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+              var value = $(this).val().toLowerCase();
+              $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
               });
             });
-        </script>
+          });
+      </script>
 </body>
 </html>
