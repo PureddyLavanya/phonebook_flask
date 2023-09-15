@@ -13,7 +13,7 @@
 	<body> 
 		{% for message in get_flashed_messages() %}
     <h2 align="center" class="text-danger"> {{message}} </h2>
-    {% endfor %}
+    	{% endfor %}
     <div class="container-fluid col-lg-4 col-md-6 col-sm-6 mx-auto cn h-100">
     <form action="/suc" method="post" class="form-group mx-auto">
         <span>Admin Name:</span><input class="form-control" type="text" name="ad_name" placeholder="Enter admin name here.." maxlength="60" size="70" required><br>

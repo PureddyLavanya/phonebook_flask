@@ -52,13 +52,19 @@ def cnt_list():
       cur=con.cursor()
       cur.execute("select * from my_contacts")
       l_cnt=cur.fetchall()
-      if ((name in l_cnt) or (ph1 in l_cnt) or (ph2 in l_cnt) or (el in l_cnt)):
-          flash("Contact details entered are already existed")
+      cur.execute("select count(*) from my_contacts")
+      tot_rec=cur.fetchall()
+      if len(tot_rec)>5:
+          flash("You can't add more than 5 contacts")
           return render_template("save.html")
       else:
-          cur.execute("insert into my_contacts (uname,nick_name,phn1,phn2,eml,addr,rel) values(%s,%s,%s,%s,%s,%s,%s)",(name,n_name,ph1,ph2,el,ad,r))
-          con.commit()
-          return redirect('/get')
+          if ((name in l_cnt) or (ph1 in l_cnt) or (ph2 in l_cnt) or (el in l_cnt)):
+            flash("Contact details entered are already existed")
+            return render_template("save.html")
+          else:
+            cur.execute("insert into my_contacts (uname,nick_name,phn1,phn2,eml,addr,rel) values(%s,%s,%s,%s,%s,%s,%s)",(name,n_name,ph1,ph2,el,ad,r))
+            con.commit()
+            return redirect('/get')
     else:
         return render_template('save.html')
     
@@ -83,7 +89,11 @@ def get():
     cur=con.cursor()
     cur.execute("SELECT * from my_contacts order by uname")
     data=cur.fetchall()
-    return render_template('print_cnt.html',my_cnt=data)
+    if data:
+        return render_template('print_cnt.html',my_cnt=data)
+    else:
+        flash("No contacts are available")
+        return render_template('print_cnt.html')
 
 @app.route('/update/<string:r_id>',methods=["GET","POST"])
 def re_update(r_id):
