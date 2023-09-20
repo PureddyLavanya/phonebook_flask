@@ -75,7 +75,7 @@ def suclogin():
                     return render_template("register.html")
                 else:
                     flash("Incorrect Username or Password.Try again!")
-                    return render_template("login.html",msg="Forgot Password?")
+                    return render_template("login.html")
         else:
             return render_template("login.html")
 
