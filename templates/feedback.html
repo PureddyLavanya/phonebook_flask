@@ -14,8 +14,8 @@
 </head>
 <body>
     <form action="/res" method="post" class="col-lg-5 col-md-7 col-sm-12 mx-auto">
-        User Name:&nbsp;<input type="text" name="u_name" maxlength="60" size="50"placeholder="Enter user name here.." required validate><br>
-        Email:&nbsp;<input type="email" name="u_email" maxlength="60" size="50" placeholder="Enter user email here.." required validate><br>
+        User Name:&nbsp;<input type="text" name="u_name" maxlength="60" size="50" value="{{ session[uname] }}" readonly><br>
+        Email:&nbsp;<input type="email" name="u_email" maxlength="60" size="50" value="{{ session[uemail] }}" readonly><br>
         Feedback Message:<br>
             &nbsp;&nbsp;<textarea id="fb" name="u_feedback" rows="9" cols="35" placeholder="Enter your feedback here.." required>
             </textarea>

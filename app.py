@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request,redirect,url_for,flash
+from flask import Flask, render_template, request,redirect,url_for,flash,sessions
+from flask_session import Session
 import mysql.connector
 from flask import *
 
@@ -13,28 +14,113 @@ app.secret_key = "my_secret_key"
 @app.route('/',methods=["GET","POST"])
 def home():
     return render_template('home.html')
+ 
+@app.route('/reg')
+def reg():
+    return render_template('register.html')
 
-@app.route('/admin')
-def admin():
+@app.route('/log')
+def log():
     return render_template('login.html')
 
-@app.route('/suc',methods=["POST","GET"])
-def my_admin():
+@app.route('/sucreg',methods=["POST","GET"])
+def sucreg():
     if request.method=="POST":
-        a_name=request.form["ad_name"]
-        a_psw=request.form["ad_psw"]
-        if a_name=="Admin" and a_psw=="123":
-            return render_template("index.html")
+        u_name=request.form["uname"]
+        f_name=request.form["fname"]
+        l_name=request.form["lname"]
+        u_email=request.form["uemail"]
+        u_psw=request.form["upsw"]
+        u_cpsw=request.form["ucpsw"]
+        u_ph=request.form["uph"]
+        cur=con.cursor()
+        cur.execute("select * from users where uname=%s",(u_name,))
+        u_nm=cur.fetchone()
+        if u_nm:
+            flash("Username already existed.Choose different one")
+            return render_template("register.html")
         else:
-            flash("Enter valid details")
-            return render_template("login.html")
+            if u_psw==u_cpsw:
+                cur.execute("insert into users (uname,fname,lname,uemail,upsw,uph) values(%s,%s,%s,%s,%s,%s)",(u_name,f_name,l_name,u_email,u_psw,u_ph))
+                con.commit()
+                return render_template("login.html")
+            else:
+                flash("Password and Confirm Password should be same")
+                return render_template("register.html")
     else:
-        return render_template("login.html")
+        return render_template("register.html")
+    
+@app.route('/suclogin',methods=["POST","GET"])
+def suclogin():
+    if 'loggedin' in session:
+        return render_template("index.html",uname=session['uname'])
+    else:
+        if request.method=="POST":
+            u_name=request.form["uname"]
+            u_psw=request.form["upsw"]
+            cur=con.cursor()
+            cur.execute("select * from users where uname=%s and upsw=%s",(u_name,u_psw))
+            u_nm=cur.fetchone()
+            if u_nm:
+                session['id']=u_nm[0]
+                session['loggedin']=True
+                session['uname']=u_nm[1]
+                session['uemail']=u_nm[4]
+                return render_template("index.html",uname=session['uname'])
+            else:
+                cur.execute("select * from users where uname=%s",(u_name,))
+                u_nm=cur.fetchone()
+                if u_nm==None:
+                    flash("Account doesn't existed.Register first")
+                    return render_template("register.html")
+                else:
+                    flash("Incorrect Username or Password.Try again!")
+                    return render_template("login.html",msg="Forgot Password?")
+        else:
+            return render_template("login.html")
 
+@app.route('/logout')
+def logout():
+    session.pop('id',None)
+    session.pop('loggedin',None)
+    session.pop('uname',None)
+    return render_template("home.html")
+
+@app.route('/forgot')
+def forgot():
+    return render_template("forgot.html")
+
+@app.route('/forgot_psw',methods=["POST","GET"])
+def forgot_psw():
+    if request.method=="POST":
+        u_name=request.form["uname"]
+        u_email=request.form["uemail"]
+        u_psw=request.form["upsw"]
+        u_cpsw=request.form["ucpsw"]
+        cur=con.cursor()
+        cur.execute("select * from users where uname=%s and uemail=%s",(u_name,u_email))
+        u_nm=cur.fetchone()
+        if u_nm:
+            if u_psw==u_cpsw:
+                cur.execute("update users set upsw=%s where uname=%s",(u_psw,u_name))
+                con.commit()
+                return render_template("login.html")
+            else:
+                flash("Password and Confirm Password should be same")
+                return render_template("forgot.html")
+        else:
+            flash("Username and Email doesn't matched")
+            return render_template("forgot.html")
+    else:
+        return render_template("forgot.html")
+        
 @app.route('/index',methods=["GET","POST"])
 def index():
-    return render_template('index.html')
-
+    if 'loggedin' in session:
+        return render_template("index.html",uname=session['uname'])
+    else:
+        return render_template("login.html")
+    
 @app.route('/create')
 def create():
     return render_template('save.html')
@@ -42,31 +128,24 @@ def create():
 @app.route('/cnt_list',methods=["GET","POST"])
 def cnt_list():
     if request.method=="POST":
-      name=request.form["uname"]
-      n_name=request.form["nickname"]
-      ph1=request.form["phn1"]
-      ph2=request.form["phn2"]
-      el=request.form["eml"]
-      ad=request.form["addr"]
-      r=request.form["rel"]
-      cur=con.cursor()
-      cur.execute("select * from my_contacts")
-      l_cnt=cur.fetchall()
-      cur.execute("select count(*) from my_contacts")
-      tot_rec=cur.fetchall()
-      if len(tot_rec)>5:
-          flash("You can't add more than 5 contacts")
-          return render_template("save.html")
-      else:
-          if ((name in l_cnt) or (ph1 in l_cnt) or (ph2 in l_cnt) or (el in l_cnt)):
+        u_name=session['uname']
+        name=request.form["uname"]
+        n_name=request.form["nickname"]
+        ph1=request.form["phn1"]
+        ph2=request.form["phn2"]
+        el=request.form["eml"]
+        ad=request.form["addr"]
+        r=request.form["rel"]
+        cur=con.cursor()
+        cur.execute("select * from my_contacts")
+        l_cnt=cur.fetchall()
+        if ((name in l_cnt) or (ph1 in l_cnt) or (ph2 in l_cnt) or (el in l_cnt)):
             flash("Contact details entered are already existed")
             return render_template("save.html")
-          else:
-            cur.execute("insert into my_contacts (uname,nick_name,phn1,phn2,eml,addr,rel) values(%s,%s,%s,%s,%s,%s,%s)",(name,n_name,ph1,ph2,el,ad,r))
+        else:
+            cur.execute("insert into my_contacts (cntsaver,uname,nick_name,phn1,phn2,eml,addr,rel) values(%s,%s,%s,%s,%s,%s,%s,%s)",(u_name,name,n_name,ph1,ph2,el,ad,r))
             con.commit()
             return redirect('/get')
-    else:
-        return render_template('save.html')
     
 @app.route('/view')
 def view():
@@ -75,8 +154,9 @@ def view():
 @app.route('/view_cnt',methods=["GET","POST"])
 def view_cnt():
     v_name=request.form["cname"]
+    u_name=session['uname']
     cur=con.cursor()
-    cur.execute("select * from my_contacts where uname=%s",(v_name,))
+    cur.execute("select * from my_contacts where uname=%s and cntsaver=%s",(v_name,u_name,))
     cnt_det=cur.fetchone()
     if cnt_det:
         return render_template("view_cnt.html",req_cnt=cnt_det)
@@ -87,7 +167,7 @@ def view_cnt():
 @app.route('/get')
 def get():
     cur=con.cursor()
-    cur.execute("SELECT * from my_contacts order by uname")
+    cur.execute("SELECT * from my_contacts where cntsaver=%s order by uname",(session['uname'],))
     data=cur.fetchall()
     if data:
         return render_template('print_cnt.html',my_cnt=data)
@@ -98,14 +178,14 @@ def get():
 @app.route('/update/<string:r_id>',methods=["GET","POST"])
 def re_update(r_id):
     cur=con.cursor()
-    cur.execute("select * from my_contacts where id=%s",(r_id,))
+    cur.execute("select * from my_contacts where id=%s and cntsaver=%s",(r_id,session['uname'],))
     data=cur.fetchone()
     return render_template("edit_cnt.html",ref=data)
 
 @app.route('/delete/<string:r_id>',methods=["GET","POST"])
 def re_delete(r_id):
     cur=con.cursor()
-    cur.execute('delete from my_contacts where id= %s', (r_id,))
+    cur.execute('delete from my_contacts where id= %s and cntsaver=%s', (r_id,session['uname'],))
     con.commit()
     return render_template('index.html')
 
@@ -118,7 +198,7 @@ def edit_sub():
     if request.method=="POST":
         e_name=request.form["mname"]
         cur=con.cursor()
-        cur.execute("select * from my_contacts where uname=%s",(e_name,))
+        cur.execute("select * from my_contacts where uname=%s and cntsaver=%s",(e_name,session['uname'],))
         req_rec=cur.fetchone()
         if req_rec:
             return render_template("edit_cnt.html",ref=req_rec)
@@ -140,7 +220,7 @@ def edit_list():
         n_addr=request.form["addr"]
         n_rel=request.form["rel"]
         cur=con.cursor()
-        cur.execute("update my_contacts set uname=%s,nick_name=%s,phn1=%s, phn2=%s, eml=%s, addr=%s, rel=%s where id=%s",(n_uname,n_nkname,n_phn1,n_phn2,n_eml,n_addr,n_rel,n_id))
+        cur.execute("update my_contacts set uname=%s,nick_name=%s,phn1=%s, phn2=%s, eml=%s, addr=%s, rel=%s where id=%s and cntsaver=%s",(n_uname,n_nkname,n_phn1,n_phn2,n_eml,n_addr,n_rel,n_id,session['uname'],))
         con.commit()
         return redirect('/get')
     else:
@@ -155,10 +235,10 @@ def del_sub():
     if request.method=="POST":
         d_name=request.form["del_name"]
         cur=con.cursor()
-        cur.execute("select uname from my_contacts where uname=%s",(d_name,))
+        cur.execute("select uname from my_contacts where uname=%s and cntsaver=%s",(d_name,session['uname'],))
         d_nm=cur.fetchone()
         if d_nm:
-            cur.execute("delete from my_contacts where uname=%s",(d_name,))
+            cur.execute("delete from my_contacts where uname=%s and cntsaver=%s",(d_name,session['uname'],))
             con.commit()
             return redirect('/get')
         else:

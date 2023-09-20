@@ -15,19 +15,27 @@ p{
 }
 form{
     border:2px solid black;
-    max-height:400px;
-    font-size:23px;
-    padding:8px;
+    max-height:450px;
+    font-size:20px;
+    padding:5px;
     margin-left:450px;
-    margin-top:170px;
+    margin-top:140px;
     z-index:1;
 }
 .cn{
     height:1000px;
 }
-input[type=text],input[type=password]{
+input[type=text]{
     width:55%;
     padding: 12px 20px;
+    margin:2% 0% 2% 5%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type=email],input[type=password]{
+    width:55%;
+    padding:10px 17px;
     margin:2% 0% 2% 5%;
     display: inline-block;
     border: 1px solid #ccc;
@@ -38,4 +46,14 @@ span{
 }
 #bt{
     margin-left:45%;
+    
 }
+a{
+    text-decoration:none;
+    color:black;
+}
+a:hover{
+    color:blue;
+    text-shadow: 0 0 3px #cf68e3, 0 0 5px #0000FF;
+}
+

@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="../static/ind.css">
 </head>
 <body>
-    <nav class="navbar navbar-fixed-top navbar-expand-sm navbar-expand-md navbar-expand-lg bg-dark h-30"> 
-        <img src="/static/images/ic2.png" class="nav-item" alt="phone_book_icon" style="height:55px; width:55px; top:5px; margin-left:45px;float: left; margin-right:55px;">
+    <nav class="navbar navbar-fixed-top navbar-expand-sm navbar-expand-md navbar-expand-lg h-30 w-100 bg-dark"> 
+        <img src="/static/images/ic2.png" class="nav-item" alt="phone_book_icon" style="height:55px; width:55px; top:5px; margin-left:32px;float: left; margin-right:40px;">
         <button class="navbar-toggler bg-warning text-danger" title="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,6 +28,7 @@
             <li class="nav-item"><a class="nav-link" href="{{url_for('meet')}}">Meet My Team</a></li> 
             <li class="nav-item"><a class="nav-link" href="{{url_for('feed')}}">Feedback</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('about')}}">About Us</a></li>
+            <button class="lgtbtn" onclick="alert('Are you sure to logout?')"><li><a class="nav-link" href="{{url_for('logout')}}">Logout</a></li></button>
         </ul>
         </div>
     </nav>
