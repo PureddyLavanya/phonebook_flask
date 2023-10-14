@@ -64,7 +64,7 @@
     <table class="table table-hover table-bordered text-wrap table-responsive-sm text-black" id="myTable">
         <thead class="bg-warning">
             <tr>
-                <th scope="col" class="lg-1 text-center">ID</th>
+                <th scope="col" class="lg-1 text-center">SNO</th>
                 <th scope="col" class="lg-1 text-center">Name</th>
                 <th scope="col" class="lg-1 text-center">Nick Name</th>
                 <th scope="col" class="lg-1 text-center">Phone1</th>
@@ -78,7 +78,7 @@
         <tbody class="table">
         {% for row in my_cnt %}
                 <tr>
-                <th class="lg-1 text-middle  text-center my-auto">{{ row[1] }}</th>
+                <th class="lg-1 text-middle  text-center my-auto">{{ my_cnt.index(row)+1 }}</th>
                 <td class="lg-1 text-middle  text-center my-auto">{{ row[2] }}</td>
                 <td class="lg-1 text-middle text-center">{{ row[3] }}</td>
                 <td class="lg-1 text-middle text-center">{{ row[4] }}</td>
@@ -87,7 +87,7 @@
                 <td class="lg-1 text-middle text-center">{{ row[7] }}</td>
                 <td class="lg-1 text-middle text-center">{{ row[8] }}</td>
                 <td class="lg-1 text-center">
-                <a href="/update/{{ row[1] }}" onclick="return confirm('Are Sure Want To Updated ?')"class="btn btn-warning btn-md m-1"><span class="glyphicon glyphicon-pencil">Edit</span></a>
+                <a href="/update/{{ row[1] }}" onclick="return confirm('Are Sure Want To Updated ?')"class="btn btn-primary btn-md m-1"><span class="glyphicon glyphicon-pencil">Edit</span></a>
                 <a href="/delete/{{ row[1] }}" onclick="return confirm('Are Sure Want To Deleted ?')" class="btn btn-danger btn-md m-1">Delete<span class="glyphicon glyphicon-trash"></span></a>
                 </td>
                 </tr>
